@@ -1,0 +1,34 @@
+
+
+
+
+ROUTES DESIGN
+
+
+Attribute Routing: http://www.asp.net/web-api/overview/web-api-routing-and-actions/attribute-routing-in-web-api-2
+
+PUT vs POST: http://stackoverflow.com/questions/630453/put-vs-post-in-rest
+
+
+Good blog about best practices for designing a RESTful API including how to filter, order, and limit GET queries:
+http://www.vinaysahni.com/best-practices-for-a-pragmatic-restful-api#advanced-queries
+
+
+
+SECURITY
+
+Good article on securing with HMAC vs Basic Authentication: http://stackoverflow.com/questions/11775594/how-to-secure-an-asp-net-web-api
+
+
+
+404 ERRORS ON IIS6
+
+When trying to run this Web API site on IIS 6, I kept getting 404 errors.
+I solved my issue with the workaround described here for inserting a wildcard application mapping to aspnet_isapi_dll.
+Here are the steps to add a wildcard application map to the .NET isapi dll:
+	1. On the Web API IIS site, click on the "Configuration" button on the directory tab.
+	2. When the dialog opens, click the "Insert" button.
+	3. Enter the executable path as the isapi_dll path, "c:\windows\microsoft.net\framework\v4.0.30319\aspnet_isapi.dll".
+	4. Make sure that you uncheck the "Verify that file exists" box.
+	5. Click "OK".
+http://haacked.com/archive/2008/11/26/asp.net-mvc-on-iis-6-walkthrough.aspx  

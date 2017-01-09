@@ -1,0 +1,291 @@
+﻿
+body,
+html,
+#topLevelDiv
+{
+    height: 100%;
+    width: 100%;
+}
+
+body
+{
+    overflow-y: scroll;
+}
+
+.was-enabled
+{
+    border: solid 1px red;
+}
+
+.was-disabled
+{
+    border: solid 1px blue;
+}
+
+.clickable, .clickable-show-link
+{
+    cursor: pointer;
+}
+
+.clickable-show-link
+{
+    font-weight: bold;
+}
+
+.clickable-show-link:hover
+{
+    text-decoration: underline;
+}
+
+.inline-block
+{
+    display: inline-block;
+    vertical-align:middle;
+}
+
+/* Status alerts ("Added", "Removed", "Error") on ICD9 & Plan rows */
+
+.status-alert
+{
+    position: absolute;
+    color: black;
+    text-align: center;
+    padding-left: 3px;
+    padding-right: 3px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    min-width: 130px;
+    white-space: nowrap;
+    opacity: 1.0;
+    filter: alpha(opacity=1); /* For IE8 and earlier */
+    top: 4px;
+    left: 33px;
+    z-index: 1000;
+}
+
+.status-alert.added
+{
+    background-color: #66FF00;
+    color: #006600;
+    border: 2px solid black;
+    color: black;
+}
+
+.status-alert.removed
+{
+    background-color: #FF9999;
+    color: black;
+    border: 2px solid black;
+}
+
+.status-alert.error
+{
+    background-color: red;
+    color: black;
+    border: 2px solid black;
+}
+
+/* Checkboxes for LMN status on plan and icd9 rows */
+
+.status-on
+{
+    background: #FFFFFF url('../images/checked.png') no-repeat top left;
+    height: 20px;
+    width: 20px;
+}
+
+.status-on.clickable:hover
+{
+    background: #FFFFFF url('../images/checked-hover.png') no-repeat top left;
+}
+
+.status-on.clickable:active
+{
+    background: #FFFFFF url('../images/unchecked.png') no-repeat top left;
+}
+
+.status-off
+{
+    background: #FFFFFF url('../images/unchecked.png') no-repeat top left;
+    height: 20px;
+    width: 20px;
+}
+
+.status-off.clickable:hover
+{
+    background: #FFFFFF url('../images/unchecked-hover.png') no-repeat top left;
+}
+
+.status-off.clickable:active
+{
+    background: #FFFFFF url('../images/checked.png') no-repeat top left;
+}
+
+.close-icon
+{
+    background: #FFFFFF url('../images/close.png') no-repeat top left;
+    height: 20px;
+    width: 20px;
+    margin-left: 20px;
+}
+
+.close-icon:hover
+{
+    background: #FFFFFF url('../images/close-hover.png') no-repeat top left;
+}
+
+.history-icon
+{
+    background: #FFFFFF url('../images/history.png') no-repeat center center;
+    height: 20px;
+    width: 20px;
+    margin-left: 20px;
+}
+
+.history-icon:hover
+{
+    background: #FFFFFF url('../images/history-hover.png') no-repeat center center;
+}
+
+.text-link, .text-link:active
+{
+    color: #333333;
+}
+
+.text-link:hover
+{
+    color: #333333;
+    text-decoration: underline;
+}
+
+.text-link-bold, .text-link-bold:active
+{
+    color: #333333;
+    font-weight: bold;
+}
+
+.text-link-bold:hover
+{
+    color: #333333;
+    text-decoration: underline;
+}
+
+/* Grid column headers */
+
+th.clickable:hover
+{
+    color: #777777;
+}
+
+.col-hdr
+{
+    display: inline-block;
+}
+
+.sort-desc, .sort-asc
+{    
+    height: 16px;
+    width: 16px;
+    margin-left: 10px;
+}
+
+.sort-desc
+{
+    background: #FFFFFF url('../images/sort-desc.png') no-repeat center center;
+}
+
+.sort-asc
+{
+    background: #FFFFFF url('../images/sort-asc.png') no-repeat center center;
+}
+
+/* Selected table row */
+tr.selected, td.selected
+{
+    background-color: #CCCCCC !important;
+}
+
+p.table-cell, span.table-cell
+{
+    height: 22px;
+    overflow: hidden;
+}
+
+p.table-cell.last
+{
+    padding-left: 10px;
+}
+
+table.header-table
+{
+    margin-bottom: 0px;
+}
+
+/* Get rid of orange outline in Chrome when focus set to div */
+*:focus
+{
+    outline: none;
+}
+
+.dynamic-resize
+{
+    position: relative;
+    height: 100%; 
+    width: 100%; 
+    margin:0;
+    min-height: 100px;
+}
+
+.infinite-scroll
+{
+    margin: 0; 
+    overflow-y: auto; 
+    height: 100%; 
+    width: 100%;
+}
+
+div.loader-bkgrd
+{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    left: 0px;
+    z-index: 1000;
+    background-color: #333333;
+    opacity: 0.05;
+    filter: alpha(opacity=05); /* For IE8 and earlier */
+}
+
+div.loader-outer
+{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    left: 0px;
+    z-index: 1001;
+}
+
+div.loader-inner
+{
+    position: relative;
+    width: 100px;
+    height: 40px;
+    line-height: 40px;
+    vertical-align: middle;
+    margin: 5px auto;
+    text-align: center;
+    font-weight: bold;
+    background-color: #FFFFFF;
+    border: 1px solid #333333;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+    z-index: 1001;
+}

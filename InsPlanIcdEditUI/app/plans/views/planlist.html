@@ -1,0 +1,62 @@
+﻿<div ng-controller="PlanListCtrl as ctrl" ng-keydown="ctrl.keydown($event)" ng-keyup="ctrl.keyup($event)" tabindex="1">
+
+    <h3>Insurance Plan List</h3>
+    <p>Filter the list using the input box below</p>
+
+    <div class="panel panel-default table-responsive">
+        <div class="panel-body">
+            <table class="table table-condensed header-table">
+                <thead>
+                    <tr>
+                        <th colspan="3">
+                            <div width="100%">
+                                <div class="row">
+                                    <p class="col-xs-1 col-sm-1 col-md-1" style="margin-top: 6px; min-width: 50px;">Filter:</p>
+                                    <p class="col-xs-8 col-sm-8 col-md-8"><input type="input" id="filterText" class="form-control" set-focus-if="ctrl.filterTextHasFocus" ng-model="ctrl.filterText" ng-change="ctrl.updateSearch()" filter-backspace-fix></p>                                   
+                                    <div class="col-xs-3 col-sm-3 col-md-3"><p class="close-icon" style="margin-top: 6px; margin-left: -15px;" ng-click="ctrl.clearFilter()" ng-show="ctrl.filterText.length > 0" /></div>
+                                </div>
+                                <div class="row">
+                                    <p class="col-xs-12 col-sm-12 col-md-12">Displaying {{ctrl.totalItems}} {{ctrl.totalItems == 1 ? "plan" : "plans"}}</p>
+                                </div>
+                            </div>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th class="col-xs-2 col-sm-2 col-md-2 clickable" ng-click="ctrl.updateSort('InsPlanId')"><span class="col-hdr">Plan Id</span><span class="col-hdr {{ctrl.getSortClass('InsPlanId')}}"></span></th>
+                        <th class="col-xs-7 col-sm-7 col-md-7 clickable" ng-click="ctrl.updateSort('InsCoDesc')"><span class="col-hdr">Description</span><span class="col-hdr {{ctrl.getSortClass('InsCoDesc')}}"></span></th>
+                        <th class="col-xs-3 col-sm-3 col-md-3 clickable" ng-click="ctrl.updateSort('Icd9Count')"><span class="col-hdr">ICD-9s</span><span class="col-hdr {{ctrl.getSortClass('Icd9Count')}}"></span></th>
+                    </tr>
+                </thead>
+            </table>
+            <div class="alert alert-info" ng-show="ctrl.items.length == 0 && !ctrl.isLoading">No records</div>            
+            <div loader="ctrl.isLoading" class="dynamic-resize" dynamic-resize on-window-resize="ctrl.onWindowResize()" resize-parent="topLevelDiv" resize-when="ctrl.itemsLoaded" resize-bottom-margin="40">
+                <div class="infinite-scroll"
+                    infinite-scroll 
+                    load-items="ctrl.loadMoreItems()"
+                    was-loaded="ctrl.itemsLoaded"
+                    load-error="ctrl.loadError"
+                    is-loading="ctrl.isLoading"
+                    is-loading-more="ctrl.isLoadingMore"
+                    min-items="ctrl.minItems"
+                    max-items="ctrl.totalItems"
+                    item-count="ctrl.itemCount"
+                    was-resized="ctrl.windowResized"
+                    scroll-buffer="ctrl.scrollBuffer"
+                    ng-show="ctrl.items.length > 0">
+                    <table class="table table-condensed table-striped table-hover">
+                        <tbody>                 
+                            <tr id="row-{{$index}}" ng-repeat="plan in ctrl.items" class="clickable" ng-class="{selected: plan.planId == ctrl.selectedItem.planId}" ng-click="ctrl.itemClicked(plan.planId)">                        
+                                <td class="col-xs-2 col-sm-2 col-md-2 table-cell" ng-class="{selected: plan.planId == ctrl.selectedItem.planId}"><p class="table-cell" title="{{plan.planId}}">{{plan.planId}}</p></td>
+                                <td class="col-xs-7 col-sm-7 col-md-7 table-cell" ng-class="{selected: plan.planId == ctrl.selectedItem.planId}"><p class="table-cell" title="{{plan.insCoDesc}}">{{plan.insCoDesc}}</p></td>
+                                <td class="col-xs-3 col-sm-3 col-md-3 table-cell"ng-class="{selected: plan.planId == ctrl.selectedItem.planId}"><p class="table-cell last" title="{{plan.icd9Count}}">{{plan.icd9Count}}</p></td>                        
+                            </tr>
+                            <tr>
+                                <td colspan="3"><div loader="ctrl.isLoadingMore" style="position: relative; height: 60px; background-color: #FFFFFF;"></div></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

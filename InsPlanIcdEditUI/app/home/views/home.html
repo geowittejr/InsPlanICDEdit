@@ -1,0 +1,23 @@
+﻿<div ng-controller="HomeCtrl as ctrl">
+    <div class="navbar navbar-default navbar-static-top">
+        <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">LMN Plan Dx Edit</a>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+            <li ng-class="{ active: ctrl.isActive('/plans') }"><a href="#/plans">Plan List</a></li>
+            <li ng-class="{ active: ctrl.isActive('/icd9s') }"><a href="#/icd9s">ICD-9 List</a></li>
+            <li ng-show="1==2" ng-class="{ active: ctrl.isActive('/dx') }"><a href="#/icd9s">Dx List</a></li>
+            <li ng-class="{ active: ctrl.isActive('/history') }"><a href="#/history">History</a></li>
+            </ul>
+        </div>
+        </div>
+    </div>
+</div>
+<div ui-view class="container"></div>

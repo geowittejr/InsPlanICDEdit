@@ -1,0 +1,58 @@
+﻿<div ng-controller="HistoryListCtrl as ctrl" ng-keydown="ctrl.keydown($event)" ng-keyup="ctrl.keyup($event)" tabindex="1">
+
+    <h3 class="inline-block">{{ctrl.entityTitle !== "" ? ctrl.entityTitle : "&nbsp;"}}</h3>
+    <span ng-show="ctrl.entityTitle !== '' && ctrl.entityId !== null && ctrl.entityType !== null"><a href="#/history" title="View history" class="inline-block history-icon"/><a href="#/history" title="View all history" class="inline-block close-icon" /></span>
+    <p>{{ctrl.entityDesc !== "" ? ctrl.entityDesc : "&nbsp;"}}</p>
+
+    <div class="panel panel-default table-responsive">
+        <div class="panel-body">
+            <table class="table table-condensed header-table">
+                <thead>
+                    <tr>
+                        <th colspan="3">
+                            <div width="100%">
+                                <div class="row">
+                                    <p class="col-xs-12 col-sm-12 col-md-12">Displaying {{ctrl.totalItems}} {{ctrl.totalItems == 1 ? "transaction" : "transactions"}}</p>
+                                </div>
+                            </div>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th class="col-xs-6 col-sm-6 col-md-5"><span class="col-hdr">Action</span></th>
+                        <th class="col-xs-4 col-sm-4 col-md-4 clickable" ng-click="ctrl.updateSort('ActionDate')"><span class="col-hdr">Date</span><span class="col-hdr {{ctrl.getSortClass('ActionDate')}}"></span></th>
+                        <th class="col-xs-2 col-sm-2 col-md-3 clickable" ng-click="ctrl.updateSort('Username')"><span class="col-hdr">Username</span><span class="col-hdr {{ctrl.getSortClass('Username')}}"></span></th>                        
+                    </tr>
+                </thead>
+            </table>
+            <div class="alert alert-info" ng-show="ctrl.items.length == 0 && !ctrl.isLoading">No records</div>            
+            <div loader="ctrl.isLoading" class="dynamic-resize" dynamic-resize on-window-resize="ctrl.onWindowResize()" resize-parent="topLevelDiv" resize-when="ctrl.itemsLoaded" resize-bottom-margin="40">
+                <div  class="infinite-scroll"
+                    infinite-scroll 
+                    load-items="ctrl.loadMoreItems()"
+                    was-loaded="ctrl.itemsLoaded"
+                    load-error="ctrl.loadError"
+                    is-loading="ctrl.isLoading"
+                    is-loading-more="ctrl.isLoadingMore"
+                    min-items="ctrl.minItems"
+                    max-items="ctrl.totalItems"
+                    item-count="ctrl.itemCount"
+                    was-resized="ctrl.windowResized"
+                    scroll-buffer="ctrl.scrollBuffer"
+                    ng-show="ctrl.items.length > 0">
+                    <table class="table table-condensed table-striped">
+                        <tbody>                 
+                            <tr id="row-{{$index}}" ng-repeat="item in ctrl.items">    
+                                <td class="col-xs-6 col-sm-6 col-md-5 table-cell"><history-action item="item" entity-type="ctrl.entityType" entity-id="ctrl.entityId"  class="table-cell" /></td>                     
+                                <td class="col-xs-4 col-sm-4 col-md-4 table-cell"><p class="table-cell" title="{{item.actionDate | longDateTime}}">{{item.actionDate | longDateTime}}</p></td>
+                                <td class="col-xs-2 col-sm-2 col-md-3 table-cell"><p class="table-cell last" title="{{item.username}}"><a href="#/history?id={{item.username}}&type=username" class="text-link-bold">{{item.username}}</a></p></td>                                                       
+                            </tr>
+                            <tr>
+                                <td colspan="3"><div loader="ctrl.isLoadingMore" style="position: relative; height: 60px; background-color: #FFFFFF;"></div></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,75 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE9"><!-- TODO remove the meta tag when we get away from IE7 and IE8 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>LMN Plan Dx Edit</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="lib/bootstrap/3.0.0/css/bootstrap.min.css" />
+</head>
+<body>
+    <!--
+        IE9+ is required due to the lack of HTML5 support in IE8.  I could not get ui-router nested routes to work properly with IE8 or lower.
+    -->
+    <!--[if lte IE 8]>
+    <div style="margin:50px; font-size:large; font-weight:bold; color: red;">Your browser is not compatible with this application. It requires IE9 or higher. Try logging into Citrix to access it.</div>
+    <![endif]-->
+        
+    <div ui-view id="topLevelDiv"></div>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="lib/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular-cookies.min.js"></script>    
+    <script src="lib/angular-ui-router/0.2.0/angular-ui-router.min.js"></script> 
+
+    <script src="app/app.js"></script>  
+    
+    <script src="app/common/services/utilities.js"></script>
+    <script src="app/common/services/authService.js"></script>
+    <script src="app/common/directives/setFocusIf.js"></script>
+    <script src="app/common/directives/dynamicResize.js"></script>    
+    <script src="app/common/directives/infiniteScroll.js"></script>
+    <script src="app/common/directives/loader.js"></script>
+    <script src="app/common/directives/statusAlert.js"></script>
+    <script src="app/common/directives/filterBackspaceFix.js"></script>
+    <script src="app/common/filters/replacePeriods.js"></script>
+    <script src="app/common/filters/dateFilters.js"></script>
+
+    <script src="app/home/controllers/HomeCtrl.js"></script>
+        
+    <script src="app/icd9s/classes/icd9.js"></script>
+    <script src="app/icd9s/classes/icd9ListQueryResults.js"></script>
+    <script src="app/icd9s/classes/icd9PlansQueryResults.js"></script>
+    <script src="app/icd9s/classes/selectedIcd9Data.js"></script>
+    <script src="app/icd9s/services/icd9ListService.js"></script>
+    <script src="app/icd9s/services/icd9DetailService.js"></script>
+    <script src="app/icd9s/services/icd9Repository.js"></script>      
+    <script src="app/icd9s/controllers/Icd9ListCtrl.js"></script> 
+    <script src="app/icd9s/controllers/Icd9DetailCtrl.js"></script>
+    
+    <script src="app/plans/classes/insPlan.js"></script>
+    <script src="app/plans/classes/planListQueryResults.js"></script>
+    <script src="app/plans/classes/planIcd9sQueryResults.js"></script>
+    <script src="app/plans/classes/selectedPlanData.js"></script>
+    <script src="app/plans/services/planListService.js"></script>
+    <script src="app/plans/services/planDetailService.js"></script>
+    <script src="app/plans/services/planRepository.js"></script>   
+    <script src="app/plans/controllers/PlanListCtrl.js"></script> 
+    <script src="app/plans/controllers/PlanDetailCtrl.js"></script>     
+
+    <script src="app/history/classes/historyItem.js"></script>
+    <script src="app/history/classes/historyListQueryResults.js"></script>
+    <script src="app/history/directives/historyAction.js"></script>
+    <script src="app/history/services/historyListService.js"></script>
+    <script src="app/history/services/historyRepository.js"></script>   
+    <script src="app/history/controllers/HistoryListCtrl.js"></script>   
+    
+    <script src="app/users/services/userRepository.js"></script>  
+    
+    
+</body>
+</html>
+
+
